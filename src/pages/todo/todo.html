@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="todolist not-done">
+                <h1>Todos</h1>
+                <form ng-submit="$ctrl.createItem()">
+                    <input type="text" class="form-control add-todo" placeholder="Add todo" ng-model="$ctrl.newItem"\>
+                </form>
+                <button id="checkAll" class="btn btn-success" ng-click="$ctrl.doneAll()">Mark all as done</button>
+
+                <hr>
+                <ul id="sortable" class="list-unstyled">
+                    <li class="ui-state-default" ng-repeat="item in $ctrl.todoItems">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="item.done" ng-click="$ctrl.done(item)" />{{ item.text }}</label>
+                        </div>
+                    </li>
+                </ul>
+                <div class="todo-footer">
+                    <strong><span class="count-todos">{{ $ctrl.todoItems.length }}</span></strong> Items Left
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="todolist">
+                <h1>Already Done</h1>
+                <ul id="done-items" class="list-unstyled">
+                    <li ng-repeat="item in $ctrl.doneItems">{{item.text}}<button class="remove-item btn btn-default btn-xs pull-right" ng-click="$ctrl.remove(item)"><span class="glyphicon glyphicon-remove"></span></button></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
